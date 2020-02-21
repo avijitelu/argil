@@ -1,0 +1,35 @@
+.horizontal-card {
+    display: flex;
+    // align-items: center;
+
+    &__img {
+        flex-basis: 80px;
+        height: 80px;
+        margin-right: 1rem;
+
+        img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+    }
+
+    &__heading {
+        text-decoration: none;
+        color: #404040;
+        font-size: 1.4rem;
+        font-family: $font-heading;
+        line-height: 1.5;
+        transition: all .2s;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    &__date {
+        color: #aaa;
+        font-size: 1.4rem;
+        margin: .5rem 0 0 0;
+    }
+}

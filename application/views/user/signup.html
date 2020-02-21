@@ -1,0 +1,57 @@
+{% extends 'layout/base.html' %}
+
+{% block maincontent %}
+<section class="container">
+    <div class="signup">
+        <form action="{{constant('URLROOT')}}/users/signup" enctype="multipart/form-data" class="signup__form" id="js-signup__form" method="POST">
+            <h2 class="signup__heading">Signup Form</h2>
+            <p class="signup__error" id="js-signup__error-all"></p>
+            <div class="signup__controller">
+                <p class="signup__label">Firstname</p>
+                <input type="text" class="signup__input" id="js-signup-fname" name="firstname">
+                <p class="signup__error" id="js-signup__error-fname"></p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">Lastname</p>
+                <input type="text" class="signup__input" id="js-signup-lname" name="lastname">
+                <p class="signup__error" id="js-signup__error-lname"></p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">About yourself</p>
+                <input type="text" class="signup__input" id="js-signup-about" name="about">
+                <p class="signup__error" style="color:#b3b3b3;">Separate your sentances by comma</p>
+                <p class="signup__error" id="js-signup__error-about"></p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">Upload Image</p>
+                <input type="file" class="signup__input" style="border:0;" id="js-signup-img" name="auther_image">
+                <p class="signup__error" style="color:#b3b3b3;">Standard image size 200px &times; 200px {{ext}}</p>
+                <p class="signup__error" id="js-signup__error-img">{{ err.img_ext }}</p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">Email</p>
+                <input type="email" class="signup__input" id="js-signup-email" name="email">
+                <p class="signup__error" id="js-signup__error-email">{{ err.email }}</p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">Password</p>
+                <input type="password" class="signup__input" id="js-signup-password" name="password">
+                <p class="signup__error" id="js-signup__error-psw"></p>
+            </div>
+            <div class="signup__controller">
+                <p class="signup__label">Confirm Password</p>
+                <input type="password" class="signup__input" id="js-signup-cpassword" name="conf_password">
+                <p class="signup__error" id="js-signup__error-cpsw"></p>
+            </div>
+            <div class="signup__controller">
+                <input type="submit" class="btn btn__submit" id="js-signup__submit" value="Signup">
+                <a href="{{constant('URLROOT')}}/users/login" class="signup__link">Have an account? Login</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{constant('JS_PATH')}}/users_signup.min.js"></script>
+{% endblock %}

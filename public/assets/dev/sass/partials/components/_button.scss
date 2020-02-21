@@ -1,0 +1,32 @@
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid $color-primary;
+    background: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all .3s;
+    cursor: pointer;
+
+    &__read {
+        color: $color-primary;
+
+        &:hover {
+            background-color: $color-primary;
+            border: 1px solid $color-primary;
+            color: #fff;
+        }
+    }
+
+    &__submit {
+        background-color: $color-primary;
+        color: #fff;
+
+        &:hover {
+            background-color: $color-primary-light;
+        }
+    }
+
+}

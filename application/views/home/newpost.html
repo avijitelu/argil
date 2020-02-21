@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+
+{% block maincontent %}
+    <section class="container">
+        <div class="blog-form" id="js-blog-list">
+            <form action="{{constant('URLROOT')}}/posts/addpost" enctype="multipart/form-data" method="POST" id="js-blog-form">
+                <h2 class="blog-form__heading">Add Your Post</h2>
+                <p class="blog-form__err" id="js-blog-form__err"></p>
+                <div class="blog-form__box">
+                    <p class="blog-form__label">Title of your Blog *</p>
+                    <input type="text" class="blog-form__input" id="js-blog-form__input-title" name="blog_title">
+                </div>
+                <div class="blog-form__box">
+                    <p class="blog-form__label">Upload Header Image *</p>
+                    <input type="file" class="blog-form__input" id="js-blog-form__input-img" name="blog_image">
+                    {% for err in error %}
+                        <p class="blog-form__err">{{err}}</p>
+                    {% endfor %}
+                </div>
+                <div class="blog-form__box">
+                    <p class="blog-form__label">Content of your blog *</p>
+                    <textarea name="blog_body" class="blog-form__textarea" id="blog_body" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="blog-form__box">
+                    <button type="submit" class="btn btn__read" id="js-blog-form__input-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div style="width:70%;display:none;" id="test"></div>
+        {% include 'layout/sidebar.html' %}
+    </section>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{constant('URLROOT')}}/public/assets/packages/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'blog_body' );
+    </script>
+    <script src="{{constant('JS_PATH')}}/posts_addpost.min.js"></script>
+{% endblock %}

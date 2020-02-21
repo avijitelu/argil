@@ -1,0 +1,36 @@
+<section class="pagination">
+    <ul class="pagination__list">
+        {% if page_no != 1 %}
+        <li class="pagination__item">
+            <a href="{{constant('URLROOT')}}/posts/index/page={{page_no - 1}}" class="pagination__link">Prev</a>
+        </li>
+        {% endif %}
+
+        {% set increase, fact = 1, page_no - 5 %}
+        {% if page_no > 5 %}
+            {% if page_no < no_of_pages %}
+                {% set increase = increase + fact %}
+            {% else %}
+                {% set increase = increase + no_of_pages - 6 %}
+            {% endif %}
+        {% endif %}
+
+        {% for pagination in 1..no_of_pages if pagination < 7 %}
+        {% if increase == page_no %}
+            {% set class = true %}
+        {% else %}
+            {% set class = false %}
+        {% endif %}
+        <li class="pagination__item">
+            <a href="{{constant('URLROOT')}}/posts/index/page={{increase}}" class="pagination__link {{class ? "pagination__active" : ""}}">{{increase}}</a>
+        </li>
+        {% set increase = increase + 1 %}
+        {% endfor %}
+
+        {% if page_no != no_of_pages %}
+        <li class="pagination__item">
+            <a href="{{constant('URLROOT')}}/posts/index/page={{page_no + 1}}" class="pagination__link">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</section>

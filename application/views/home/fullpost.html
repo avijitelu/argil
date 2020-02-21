@@ -1,0 +1,58 @@
+{% extends 'layout/base.html' %}
+
+{% block maincontent %}
+<section class="container" id="js-container">
+    <div class="blog-list" id="js-blog-list">
+        <div class="fullblog">
+            <div class="fullblog__header">
+                <img src="{{constant('URLROOT')}}/public/images/blog/{{post.post_image}}" alt="" class="fullblog__header-img">
+            </div>
+            <div class="fullblog__title">
+                <h2 class="fullblog__heading">{{ post.title|raw }}</h2>
+                <div class="blog-info">
+                    <div class="blog-info__auther">
+                        <div class="blog-info__img-auther">
+                            <img src="{{constant('URLROOT')}}/public/images/users/{{post.user_image}}" alt="">
+                        </div>
+                        <div class="blog-info__auther-data">
+                            <p class="blog-info__auther-name">
+                                {{ post.firstname }} {{ post.lastname }}
+                            </p>
+                            {% set auther_about = post.about_user|split(',') %}
+                            {% for info in auther_about %}
+                                <p class="blog-info__auther-desg">{{ info }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="blog-info__stats">
+                        <div class="blog-card__info">
+                            <svg class="blog-card__user">
+                                <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-clock"></use>
+                            </svg>
+                            <span class="blog-card__data">{{ post.post_created_at|date("M j, Y") }}</span>
+                        </div>
+                        <div class="blog-card__info">
+                            <svg class="blog-card__user">
+                                <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-eye1"></use>
+                            </svg>
+                            <span class="blog-card__data">{{ post.views }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fullblog__body" id="js-fullblog__body">
+                {{ post.body|raw }}
+            </div>
+        </div>
+    </div>
+    {% include 'layout/sidebar.html' %}
+</section>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{constant('JS_PATH')}}/posts_fullpost.min.js"></script>
+    <script>
+        var postId = "{{ post.post_id }}" ;
+    </script>
+{% endblock %}

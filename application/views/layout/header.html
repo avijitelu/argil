@@ -1,0 +1,41 @@
+<nav class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__left">
+            <a href="{{constant('URLROOT')}}" class="navbar__link navbar__brand-name">
+                {# <svg class="navbar__icon-home">
+                    <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-home"></use>
+                </svg> #}
+                argil
+            </a>
+        </div>
+        {# <div class="navbar__content">
+            <ul class="navbar__list">
+                <li class="navbar__item">
+                    <a href="{{constant('URLROOT')}}" class="navbar__link active_navlink">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{{constant('URLROOT')}}/about" class="navbar__link">About</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{{constant('URLROOT')}}/contact" class="navbar__link">Contact</a>
+                </li>
+            </ul>
+        </div> #}
+        <div class="navbar__right">
+            <ul class="navbar__list">
+                <li class="navbar__item">
+                    <a href="{{constant('URLROOT')}}/posts/addpost" class="navbar__link navbar__link--fill">Write a Blog</a>
+                </li>
+                {% if session.user_id is empty %}
+                    <li class="navbar__item">
+                        <a href="{{constant('URLROOT')}}/users/login" class="navbar__link navbar__link--line">Login / Signup</a>
+                    </li>
+                {% else %}
+                    <li class="navbar__item">
+                        <a href="{{constant('URLROOT')}}/users/logout" class="navbar__link navbar__link--line">Logout</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

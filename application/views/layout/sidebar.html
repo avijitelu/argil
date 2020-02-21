@@ -1,0 +1,35 @@
+<div class="sidebar" id="js-sidebar">
+    <div class="popular-post">
+        <h3 class="heading__sidebar">Popular Posts</h3>
+        <div class="popular-post__container">
+            {% for popular_post in popular_posts %}
+            <div class="small-card">
+                <div class="small-card__img">
+                    <img src="{{constant('URLROOT')}}/public/images/blog/{{popular_post.post_image}}" alt="">
+                </div>
+                <div class="small-card__text">
+                    <a href="{{constant('URLROOT')}}/posts/fullpost/{{popular_post.post_id}}-{{popular_post.slug}}" class="small-card__heading">{{ popular_post.title|raw }}</a>
+                    <p class="small-card__date">{{popular_post.post_created_at|date("M j, Y")}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="latest-post" id="js-latest-post">
+        <h3 class="heading__sidebar">Recent Posts</h3>
+        <div class="latest-post__container">
+            {% for latest_post in latest_posts %}
+            <div class="horizontal-card">
+                <div class="horizontal-card__img">
+                    <img src="{{constant('URLROOT')}}/public/images/blog/{{latest_post.post_image}}" alt="">
+                </div>
+                <div class="horizontal-card__text">
+                    <a href="{{constant('URLROOT')}}/posts/fullpost/{{latest_post.post_id}}-{{latest_post.slug}}" class="horizontal-card__heading">{{latest_post.title|raw}}</a>
+                    <p class="horizontal-card__date">{{latest_post.post_created_at|date("M j, Y")}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

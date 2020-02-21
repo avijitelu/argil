@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+
+{% block maincontent %}
+<section class="view_port">
+    <div class="login">
+        <form action="{{constant('URLROOT')}}/users/login" class="login__form" id="js-login__form" method="POST">
+            <h2 class="login__heading">Login Form {{text.fname}}</h2>
+            <p class="login__error" id="js-login__error-all">{{ register_msg }}</p>
+            <div class="login__controller">
+                <p class="login__label">Email</p>
+                <input type="email" class="login__input" id="js-login-email" name="email" value="{{ email }}">
+                <p class="login__error" id="js-login__error-email">{{ error_email }}</p>
+            </div>
+            <div class="login__controller">
+                <p class="login__label">Password</p>
+                <input type="password" class="login__input" id="js-login-password" name="password">
+                <p class="login__error" id="js-login__error-psw">{{ error_password }}</p>
+            </div>
+            <div class="login__controller">
+                <input type="submit" class="btn btn__submit" id="js-login__submit" value="Login">
+                <a href="{{constant('URLROOT')}}/users/signup" class="signup__link">New user? Signup</a>
+                <p>
+                    <a href="{{constant('URLROOT')}}/users/forgotpassword" style="font-size:15px;">Forgot password?</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{constant('JS_PATH')}}/users_login.min.js"></script>
+{% endblock %}

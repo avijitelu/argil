@@ -1,0 +1,60 @@
+.blog-form {
+    width: 70%;
+    border-right: 1px solid rgba(144, 144, 144, .25);
+
+    @media (max-width: 700px) {
+        width: 100%;
+        border: none;
+    }
+
+    form {
+        width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 25px 5rem;
+        border-radius: 5px;
+    }
+
+    &__err {
+        color: red;
+        font-size: 1.4rem;
+        font-family: $font-heading;
+    }
+
+    &__heading {
+        margin: 0 0 18px 0;
+        font-size: 3rem;
+        color: #acacac;
+    }
+
+    &__box {
+
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+
+    &__label {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+    }
+
+    &__input {
+        height: 40px;
+        width: 100%;
+        font-size: 1.7rem;
+        font-family: $font-text;
+
+        &:not([type="file"]) {
+            border: 1px solid #ddd;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        font-family: $font-text;
+        font-size: 1.6rem;
+        border: 1px solid #ddd;
+    }
+}

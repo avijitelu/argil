@@ -1,0 +1,45 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ constant('SITENAME') }}</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,700|Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{constant('CSS_PATH')}}/main.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111666468-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111666468-2');
+    </script>
+
+</head>
+<body>
+    {% include 'layout/header.html' %}
+
+    <!-- Main content goes here -->
+    {% block maincontent %}
+
+    {% endblock %}
+
+    {% include 'layout/footer.html' %}
+
+    {% block jscontent %}
+
+    {% endblock %}
+
+    <script>
+        var BASE_HREF = "{{ constant('URLROOT') }}";
+    </script>
+
+</body>
+</html>
+{% endspaceless %}

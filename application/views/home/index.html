@@ -1,0 +1,53 @@
+{% extends "layout/base.html" %}
+
+{% block maincontent %}
+    <section class="container" id="js-container">
+        <div class="blog-list" id="js-blog-list">
+            {% for post in posts|slice(start, 10) %}
+                <div class="blog-card">
+                    <div class="blog-card__img">
+                        <img src="{{constant('URLROOT')}}/public/images/blog/{{post.post_image}}" alt="">
+                    </div>
+                    <div class="blog-card__content">
+                        
+                        {% if post.title|length > 57 %}
+                            {% set post_heading = post.title[:57] ~ '...' %}
+                        {% else %}
+                            {% set post_heading = post.title %}
+                        {% endif %}
+
+                        <h2 class="blog-card__heading">{{ post_heading|raw }}</h2>
+                        <div class="blog-card__info-box">
+                            <div class="blog-card__info">
+                                <svg class="blog-card__user">
+                                    <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-user"></use>
+                                </svg>
+                                <span class="blog-card__data">{{ post.firstname }} {{ post.lastname }}</span>
+                            </div>
+                            <div class="blog-card__info">
+                                <svg class="blog-card__user">
+                                    <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-clock"></use>
+                                </svg>
+                                <span class="blog-card__data">{{ post.post_created_at|date("M j, Y") }}</span>
+                            </div>
+                            <div class="blog-card__info">
+                                <svg class="blog-card__user">
+                                    <use xlink:href="{{constant('URLROOT')}}/public/images/sprite.svg#icon-eye1"></use>
+                                </svg>
+                                <span class="blog-card__data">{{ post.views }}</span>
+                            </div>
+                        </div>
+                        <p class="blog-card__text">{{ post.body[0:200]|striptags|raw }}...</p>
+                        <a href="{{constant('URLROOT')}}/posts/fullpost/{{post.post_id}}-{{post.slug}}" class="btn btn__read">Continue Reading</a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% include 'layout/pagination.html' %}
+        </div>
+        {% include 'layout/sidebar.html' %}
+    </section>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{constant('JS_PATH')}}/posts.min.js"></script>
+{% endblock %}
